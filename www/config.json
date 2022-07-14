@@ -29,6 +29,11 @@
       "display_name": "File View",
       "schema_name": "FileView",
       "type": "record"
+    },
+    {
+      "display_name": "Project View",
+      "schema_name": "ProjectView",
+      "type": "record"
     }
   ],
   "community": "MC2",
