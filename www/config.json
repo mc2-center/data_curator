@@ -36,7 +36,7 @@
       "type": "record"
     }
   ],
-  "community": "Example",
+  "community": "MC2",
   "schema": "v0.1.0",
   "schematic_service": "v1"
 }
