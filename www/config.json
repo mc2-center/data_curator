@@ -3,37 +3,37 @@
     {
       "display_name": "Tool View",
       "schema_name": "ToolView",
-      "type": "record"
+      "type": "file"
     },
     {
       "display_name": "Publication View",
       "schema_name": "PublicationView",
-      "type": "record"
+      "type": "file"
     },
     {
       "display_name": "Dataset View",
       "schema_name": "DatasetView",
-      "type": "record"
+      "type": "file"
     },
     {
       "display_name": "Person View",
       "schema_name": "PersonView",
-      "type": "record"
+      "type": "file"
     },
     {
       "display_name": "Grant View",
       "schema_name": "GrantView",
-      "type": "record"
+      "type": "file"
     },
     {
       "display_name": "File View",
       "schema_name": "FileView",
-      "type": "record"
+      "type": "file"
     },
     {
       "display_name": "Project View",
       "schema_name": "ProjectView",
-      "type": "record"
+      "type": "file"
     }
   ],
   "community": "MC2",
