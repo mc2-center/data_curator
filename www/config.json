@@ -36,7 +36,7 @@
       "type": "file"
     }
   ],
-  "community": "MC2",
+  "community": "Example",
   "schema": "v0.1.0",
   "schematic_service": "v1"
 }
