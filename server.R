@@ -80,7 +80,7 @@ shinyServer(function(input, output, session) {
       message("'synapse_driver' fails, run 'synapse_driver' to see detailed error")
       dcWaiter("update", landing = TRUE, isPermission = FALSE)
     } else {
-      projects_list <- synStore_obj$getStorageProjects()
+      projects_list <- synapse_driver$getStorageProjects(synStore_obj)
       datatype_list$projects <<- list2Vector(projects_list)
 
       # updates project dropdown
@@ -192,7 +192,10 @@ shinyServer(function(input, output, session) {
     if (input$tabs == "tab_template") {
       dcWaiter("show", msg = paste0("Getting files in ", input$dropdown_folder, "..."))
       # get file list in selected folder
-      file_list <- synapse_driver$getFilesInStorageDataset(synStore_obj, folder_synID())
+      file_list <- synapse_driver$getFilesInStorageDataset(
+        synStore_obj,
+        folder_synID()
+      )
       datatype_list$files <<- list2Vector(file_list)
       dcWaiter("hide")
     }
@@ -328,10 +331,10 @@ shinyServer(function(input, output, session) {
     # loading screen for Google link generation
     dcWaiter("show", msg = "Generating link...")
 
-    filled_manifest <- metadata_model$populateModelManifest(
-      paste0(config$community, " ", input$dropdown_template),
-      inFile$raw()$datapath,
-      template_schema_name())
+    filled_manifest <- metadata_model$populateModelManifest(paste0(
+      config$community,
+      " ", input$dropdown_template
+      ), inFile$raw()$datapath, template_schema_name())
 
     # rerender and change button to link
     output$val_gsheet <- renderUI({
@@ -387,7 +390,7 @@ shinyServer(function(input, output, session) {
         synStore_obj,
         "./tmp/synapse_storage_manifest.csv",
         folder_synID(),
-        "table"
+        manifest_record_type = "table"
       )
       manifest_path <- tags$a(href = paste0("https://www.synapse.org/#!Synapse:", manifest_id), manifest_id, target = "_blank")
 
@@ -418,11 +421,11 @@ shinyServer(function(input, output, session) {
       )
 
       # associates metadata with data and returns manifest id
-      manifest_id <- synStore_obj$associateMetadataWithFiles(
+      manifest_id <- synapse_driver$associateMetadataWithFiles(
         synStore_obj,
         "./tmp/synapse_storage_manifest.csv",
         folder_synID(),
-        "table"
+        manifest_record_type = "table"
       )
       manifest_path <- tags$a(href = paste0("https://www.synapse.org/#!Synapse:", manifest_id), manifest_id, target = "_blank")
 
