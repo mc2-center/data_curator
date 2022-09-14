@@ -22,8 +22,8 @@ manifest:
 
 model:
   input:
-    download_url: 'https://raw.githubusercontent.com/mc2-center/data-models/main/csbc.model.jsonld' # url to download JSON-LD data model
-    location: 'schematic/tests/data/csbc.model.jsonld' # path to JSON-LD data mode
+    repo: 'mc2-center/data-models' # data model repo url (<repo-owner>/<repo-name>)
+    location: 'data-models/csbc.model.jsonld' # path to JSON-LD file
     file_type: 'local'
 
 style:
