@@ -23,7 +23,7 @@ manifest:
 model:
   input:
     repo: 'mc2-center/data-models' # data model repo url (<repo-owner>/<repo-name>)
-    location: 'data-models/csbc.model.jsonld' # path to JSON-LD file
+    location: 'data-models/mc2.model.jsonld' # path to JSON-LD file
     file_type: 'local'
 
 style:
