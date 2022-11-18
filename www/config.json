@@ -19,21 +19,6 @@
       "display_name": "Person View",
       "schema_name": "PersonView",
       "type": "file"
-    },
-    {
-      "display_name": "Grant View",
-      "schema_name": "GrantView",
-      "type": "file"
-    },
-    {
-      "display_name": "File View",
-      "schema_name": "FileView",
-      "type": "file"
-    },
-    {
-      "display_name": "Project View",
-      "schema_name": "ProjectView",
-      "type": "file"
     }
   ],
   "community": "Example",
