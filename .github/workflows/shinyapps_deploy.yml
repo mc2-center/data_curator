@@ -67,8 +67,26 @@ jobs:
       - name: Set Configurations for Schematic
         shell: bash
         run: |
+          R -e '
+            config <- yaml::yaml.load_file("schematic_config.yml");
+            system(sprintf("echo 'MODEL_REPO=%s' >> $GITHUB_ENV", config$model$input$repo));
+            system(sprintf("echo 'MODEL_PATH=%s' >> $GITHUB_ENV", config$model$input$location));
+          '
           # write out configuration files using github secrets
           echo "${{ secrets.SCHEMATIC_SYNAPSE_CONFIG }}" > .synapseConfig
+
+      - name: Clone Data Model
+        shell: bash
+        run: |
+          git clone https://github.com/${{ env.MODEL_REPO }}.git
+      - name: Create config.json
+        shell: bash
+        run: |
+          source .venv/bin/activate
+          python3 .github/generate_config_json.py \
+            -jd ${{ env.MODEL_PATH }} \
+            -schema ${{ env.MODEL_REPO }} \
+            -service 'Sage-Bionetworks/schematic'
 
       - name: Save service account credentials for Schematic
         id: create-json
